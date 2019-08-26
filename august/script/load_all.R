@@ -11,3 +11,4 @@ survey.2018 <- read_csv(
 survey.2019 <- read_csv(
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vQlKBlheOfocbBLn5JKndPsVPMJ5UCBgY5n884oJrgh4y4CCCMzYGzRiKGF_dBp9DOK-3-2_H8KYnH6/pub?gid=818679923&single=true&output=csv"
 )
+source(here::here("script","colnames_lists.R"))

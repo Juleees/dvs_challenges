@@ -1,0 +1,50 @@
+
+
+
+CLEAN.SURVEY.2017 <- survey.2017
+colnames(CLEAN.SURVEY.2017) <- colname.list.2017
+source(here::here("script","_survey_2017_wrangle.R"))
+
+
+# NEW VARIABLES 2018:
+#  +
+#  "EDU.MAJOR"
+#  "EXPERIENCE.YEARS", 
+#  "DATAVIS.EDU.METHOD",
+#  "JOB.DATAVIS.EXPECTATIONS"
+#  "JOB.PORTFOLIO.HOURS"
+#  "JOB.DATAVIS.FATIGUE",
+#  "JOB.DATAVIS.NEWTOOLS"
+
+
+# -
+#  "JOB.CHANGE
+#  "REGION",
+#  "ETHNICITY"
+CLEAN.SURVEY.2018 <- survey.2018
+colnames(CLEAN.SURVEY.2018) <- colname.list.2018
+source(here::here("script","_survey_2018_wrangle.R"))
+
+# NEW VARIABLES - 2019:
+
+#  +
+#  CITY,
+#  JOB.DATAVIS.LACKSKILLS,
+#  JOB.DATAVIS.LEADERSHIP.UNDERSTANDING,
+#  JOB.DESCRIPTION,
+#  JOB.HOURLY.RATE,
+#  LGBTQ,
+#  SPOKEN.LANGUAGE
+#  FREELANCE.OR.CONSULTANT,
+
+
+# -
+#  DATAVIS.INTENT,
+#  JOB.DATAVIS.LEADERSHIP (REPLACED BY JOB.DATAVIS.LEADERSHIP.UNDERSTANDING,)
+#  JOB.STATUS,
+#  JOB.TITLE,
+
+CLEAN.SURVEY.2019 <- survey.2019
+colnames(CLEAN.SURVEY.2019) <- colname.list.2019
+source(here::here("script","_survey_2019_wrangle.R"))
+
