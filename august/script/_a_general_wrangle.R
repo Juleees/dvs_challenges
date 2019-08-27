@@ -48,3 +48,7 @@ CLEAN.SURVEY.2019 <- survey.2019
 colnames(CLEAN.SURVEY.2019) <- colname.list.2019
 source(here::here("script","_survey_2019_wrangle.R"))
 
+
+ALL.YEARS <- rbind(FIRST, SECOND, THIRD)
+rm(FIRST, SECOND, THIRD)
+
