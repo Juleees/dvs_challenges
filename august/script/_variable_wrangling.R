@@ -619,7 +619,7 @@ summary(ALL.YEARS$JOB.IMPROVEMENT)
 
 
 #  JOB.PAY
-# There are issues here, I THINK THE VARIABLE IM USING IS NOT THE SAME IN EVERY YEAR
+# READY!
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
     JOB.PAY = as.character(JOB.PAY),

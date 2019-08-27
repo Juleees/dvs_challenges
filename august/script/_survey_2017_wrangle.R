@@ -8,6 +8,7 @@
 
 CLEAN.SURVEY.2017 <- CLEAN.SURVEY.2017 %>% 
   mutate(
+    JOB.PAY = NA,
     COUNTRY = REGION,
     DATAVIS.EDU.METHOD = NA,
     EDU.MAJOR = NA,
