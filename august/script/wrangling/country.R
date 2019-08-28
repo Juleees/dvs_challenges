@@ -32,8 +32,8 @@ TEMP <- TEMP %>%
   ) 
 
 
-TEMP %>% group_by(COUNTRY) %>%
-  summarise(COUNT = n()) %>% View()
+# TEMP %>% group_by(COUNTRY) %>%
+#   summarise(COUNT = n()) %>% View()
 
 TEMP <- TEMP %>% 
   mutate(

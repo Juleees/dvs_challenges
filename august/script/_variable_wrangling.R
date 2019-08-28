@@ -30,6 +30,7 @@ ALL.YEARS <- ALL.YEARS %>%
   )
 summary(ALL.YEARS$COMMUNITY.LEADERS)
 
+source(here::here("script", "wrangling", "community_leaders.R"))
 
 #  COUNTRY 
 ## NEEDS CLEANING
@@ -69,6 +70,7 @@ ALL.YEARS %>% group_by(DATAVIS.EDU, YEAR) %>%
 
 
 
+
 #  DATAVIS.EDU.METHOD 
 # I should separate the names in commas, that way its easier to count the times a method is mentioned
 ALL.YEARS <- ALL.YEARS %>% 
@@ -80,6 +82,7 @@ ALL.YEARS <- ALL.YEARS %>%
 
 summary(ALL.YEARS$DATAVIS.EDU.METHOD)
 
+source(here::here("script", "wrangling", "dataviz_edu_methods.R"))
 
 #  DATAVIS.TIME 
 # READY
@@ -106,6 +109,7 @@ summary(ALL.YEARS$EDU.BACKGROUND)
 
 ALL.YEARS %>% group_by(EDU.BACKGROUND, YEAR) %>% 
   summarise(count = n()) %>% View()
+
 
 #  EDU.MAJOR 
 #  NEEDS INTENSE CLEANING
@@ -135,7 +139,7 @@ ALL.YEARS <- ALL.YEARS %>%
 
 summary(ALL.YEARS$EXPERIENCE.DATAVIS.YEARS)
 
-ALL.YEARS %>% subset(YEAR == "2017") %>% 
+ALL.YEARS %>% subset(YEAR == "2019") %>% 
   select(EXPERIENCE.DATAVIS.YEARS) %>% 
   summary()
 
@@ -246,7 +250,7 @@ ALL.YEARS <- ALL.YEARS %>%
   )
 
 summary(ALL.YEARS$JOB.DATAVIS.AUDIENCEDATAVISUSE)
-ALL.YEARS %>% group_by(JOB.DATAVIS.AUDIENCEDATAVISUSE, YEAR) %>% 
+ALL.YEARS %>% group_by(JOB.DATAVIS.AUDIENCEDATAVISUSE) %>% 
   summarise(count = n()) %>% View()
 
 
