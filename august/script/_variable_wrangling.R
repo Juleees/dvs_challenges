@@ -5,9 +5,10 @@ JIC <- ALL.YEARS
 str(ALL.YEARS)
 
 # YEAR
+## READY!
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
-    YEAR = as.factor(as.character(YEAR))
+    YEAR = as.character(YEAR)
   )
 summary(ALL.YEARS$YEAR)
 
@@ -41,6 +42,9 @@ ALL.YEARS <- ALL.YEARS %>%
 
 ALL.YEARS %>% group_by(COUNTRY, YEAR) %>% 
   summarise(count = n()) %>% View()
+
+
+source(here::here("script", "wrangling", "country.R"))
 
 # 2017 has no country data, only "Regions" should I made it more   
 # 2018 has state data, which messes the data for the US
