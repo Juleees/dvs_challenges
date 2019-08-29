@@ -33,7 +33,7 @@ summary(ALL.YEARS$COMMUNITY.LEADERS)
 source(here::here("script", "wrangling", "community_leaders.R"))
 
 #  COUNTRY 
-## NEEDS CLEANING
+## READY
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
     COUNTRY = as.character(COUNTRY),
@@ -110,6 +110,8 @@ summary(ALL.YEARS$EDU.BACKGROUND)
 ALL.YEARS %>% group_by(EDU.BACKGROUND, YEAR) %>% 
   summarise(count = n()) %>% View()
 
+source(here::here("script", "wrangling", "edu_background.R"))
+
 
 #  EDU.MAJOR 
 #  NEEDS INTENSE CLEANING
@@ -126,6 +128,7 @@ summary(ALL.YEARS$EDU.MAJOR)
 ALL.YEARS %>% group_by(EDU.MAJOR, YEAR) %>% 
   summarise(count = n()) %>% View()
 
+source(here::here("script", "wrangling", "edu_background.R"))
 
 
 #  EXPERIENCE.DATAVIS.YEARS 
