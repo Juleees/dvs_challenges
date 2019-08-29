@@ -15,6 +15,8 @@ TEMP <- TEMP %>%
       grepl("SOFTWARE", EDU.MAJOR) ~ "COMPUTER SCIENCE",
       grepl("COMPU", EDU.MAJOR) ~ "COMPUTER SCIENCE",
       grepl("PROGRAMMING", EDU.MAJOR) ~ "COMPUTER SCIENCE",
+      grepl("PROGRAMMING", EDU.MAJOR) ~ "COMPUTER SCIENCE",
+      grepl("PROGRAMMING", EDU.MAJOR) ~ "COMPUTER SCIENCE",
       
       grepl("ENGINEERING", EDU.MAJOR) ~ "ENGINEERING",
       grepl("ENGINEER", EDU.MAJOR) ~ "ENGINEERING",
@@ -106,7 +108,20 @@ TEMP <- TEMP %>%
       EDU.MAJOR %in% c("ENGLISH",
                        "CHINESE",
                        "FRENCH",
-                       "INTERPRETING") ~ "LANGUAGES",
+                       "INTERPRETING",
+                       "SPANISH") ~ "LANGUAGES",
+      EDU.MAJOR %in% c("IT",
+                       "INFORMATION SCIENCE",
+                       "INFORMATICS",
+                       "CONPUTER SCIENCES",
+                       "CS") ~ "COMPUTER SCIENCE",
+      EDU.MAJOR %in% c("FRONTEND DEVELOP",
+                       "WEB DEVELOPMENT") ~ "DESIGN",
+      EDU.MAJOR %in% c("ELECTRICAL AND ELECTRONICS",
+                       "ELECTRONICS") ~ "ENGINEERING",
+      EDU.MAJOR %in% c("MANAGEMENT",
+                       "OPERATIONS MANAGEMENT",
+                       "") ~ "BUSINESS & FINANCE",
       
       T ~ EDU.MAJOR
     )
@@ -133,3 +148,12 @@ TEMP %>%
   summarise(count = n()) %>% View()
 
 ALL.YEARS <- TEMP
+
+
+
+
+
+
+# library(xlsx)
+# jj <- read.xlsx("Texas_Update.xlsx", sheetName = "Hoja1")
+# write_csv(jj,"Texas_Update.csv")

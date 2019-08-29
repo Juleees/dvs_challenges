@@ -226,6 +226,7 @@ ALL.YEARS <- ALL.YEARS %>%
     
   )
 
+source(here::here("script", "wrangling", "jod_datavis_audience.R"))
 
 
 #  JOB.DATAVIS.AUDIENCEDATAVISCONSUMPTION 
