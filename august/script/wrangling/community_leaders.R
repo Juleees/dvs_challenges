@@ -112,7 +112,9 @@ TEMP <-  TEMP %>%
   ) 
 
 
-COMM.LEADERS <- TEMP
+COMM.LEADERS <- TEMP %>% 
+  group_by(NAME, REGION, YEAR) %>% 
+  summarise(COUNT = n())
 
 COMM.LEADERS %>% 
 group_by(NAME, REGION) %>% 

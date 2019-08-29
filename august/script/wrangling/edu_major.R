@@ -11,60 +11,10 @@ TEMP <- TEMP %>%
 TEMP <- TEMP %>% 
   mutate(
     EDU.MAJOR = case_when(
-      # EDU.MAJOR %in% c("MATH",
-      #                  "MATHEMATICS", 
-      #                  "STATISTICS") ~ "MATH & STATISTICS",
-      # EDU.MAJOR %in% c("BACHELORS",
-      #                       "BACHELOR OF FINE ARTS",
-      #                       "CURRENTLY UNIVERSITY STUDENT",
-      #                       "AAS/WORK TOWARD BA.",
-      #                       "MATHS GRADUATE",
-      #                       "ED.D") ~ "BACHELORS",
-      # EDU.MAJOR %in% c("ENGINEERING",,
-      #                  "MECHANICAL ENGINEERING",
-      #                  "ELECTRICAL ENGINEERING",
-      #                  "CHEMICAL ENGINEERING",
-      #                  "COMPUTER ENGINEERING",
-      #                  "INDUSTRIAL ENGINEERING",
-      #                  "CIVIL ENGINEERING",
-      #                  "AEROSPACE ENGINEERING") ~ "ENGINEERING",
-      # EDU.MAJOR %in% c("MASTERS",
-      #                       "FINSIHING MASTERS",
-      #                       "IN SCHOOL FOR MY MASTERS NOW",
-      #                       "MASTERS & ABD",
-      #                       "MLIS, MASTER OF LIBRARY AND INFORMATION SCIENCE",
-      #                       "PURSUING A MASTERS") ~ "MASTERS",
-      # EDU.MAJOR %in% c("POST GRADUATE",
-      #                       "POST GRAD CERTIFICATE.",
-      #                       "POST GRAD DIPLOMA (NOT MASTERS)",
-      #                       "POST GRADUATE DIPLOMA",
-      #                       "GRADUATE LEVEL") ~ "POST GRADUATE",
-      # EDU.MAJOR %in% c("ASSOCIATES",
-      #                       "ASSOCIATES OF SCIENCE",
-      #                       "2 YEARS UNDERGRAD",
-      #                       "MODERN APPRENTICESHIP IN CREATIVE DIGITAL MEDIA") ~ "ASSOCIATE",
-      # EDU.MAJOR %in% c("HIGH SCHOOL",
-      #                       "HIGH SCHOOL, AND A FEW COLLEGE CLASSES",
-      #                       "HIGH SCHOOL, SOME COLLEGE (NO DEGREE)",
-      #                       "JUST HIGH-SCHOOL AND LIFE-LONG-LEARNING") ~ "HIGH SCHOOL",
-      # EDU.MAJOR %in% c("AUTODIDACT",
-      #                       "NONE",
-      #                       "NONE? MIGHT WANT TO ADJUST THIS QUESTION.",
-      #                       "SCHOOL",
-      #                       "SELF TAUGHT",
-      #                       "WORK/ON THE JOB",
-      #                       "SCHOOL",
-      #                       "DROPOUT",
-      #                       "DIPLOMA",
-      #                       "HIGHER EDUCATION NONE DEGREE",
-      #                       "HONORS DEGREE",
-      #                       "CULINARY ARTS SCHOOL",
-      #                       "MD",
-      #                       "I DROPPED OUT OF SCHOOL IN GRADE 9. YES, REALLY.",
-      #                       "NO DEGREE") ~ "OTHER",
       grepl("COMPUTER SCIENCE", EDU.MAJOR) ~ "COMPUTER SCIENCE",
       grepl("SOFTWARE", EDU.MAJOR) ~ "COMPUTER SCIENCE",
       grepl("COMPU", EDU.MAJOR) ~ "COMPUTER SCIENCE",
+      grepl("PROGRAMMING", EDU.MAJOR) ~ "COMPUTER SCIENCE",
       
       grepl("ENGINEERING", EDU.MAJOR) ~ "ENGINEERING",
       grepl("ENGINEER", EDU.MAJOR) ~ "ENGINEERING",
@@ -90,6 +40,7 @@ TEMP <- TEMP %>%
       grepl("PSYCHOLOGY", EDU.MAJOR) ~ "SOCIAL SCIENCES",
       grepl("SOCIAL SCIENCE", EDU.MAJOR) ~ "SOCIAL SCIENCES",
       grepl("POLITICS", EDU.MAJOR) ~ "SOCIAL SCIENCES",
+      grepl("POL", EDU.MAJOR) ~ "SOCIAL SCIENCES",
       grepl("HUMANITIES", EDU.MAJOR) ~ "SOCIAL SCIENCES",
       
       grepl("PHYSICS", EDU.MAJOR) ~ "NATURAL SCIENCES",
@@ -125,6 +76,7 @@ TEMP <- TEMP %>%
       grepl("URBAN", EDU.MAJOR) ~ "URBAN STUDIES",
       grepl("ENGLISH", EDU.MAJOR) ~ "ENGLISH",
       grepl("CHINESE", EDU.MAJOR) ~ "CHINESE",
+      grepl("FRENCH", EDU.MAJOR) ~ "FRENCH",
       grepl("LANGUAGES", EDU.MAJOR) ~ "LANGUAGES",
       grepl("POLICY", EDU.MAJOR) ~ "POLICY SCIENCE",
       grepl("BEHAVIO", EDU.MAJOR) ~ "BEHAVIOURAL SCIENCE",
@@ -136,12 +88,45 @@ TEMP <- TEMP %>%
       grepl("DRAWING", EDU.MAJOR) ~ "ART",
       grepl("ILLUSTRATION", EDU.MAJOR) ~ "ART",
       grepl("ARCHITECTURE", EDU.MAJOR) ~ "ART",
+      grepl("LINGUI", EDU.MAJOR) ~ "LINGUISTICS",
       T ~ EDU.MAJOR
     )
-  ) 
+  ) %>% 
+  mutate(
+    EDU.MAJOR = case_when(
+      grepl("ART", EDU.MAJOR) ~ "THE ARTS",
+      grepl("MUSIC", EDU.MAJOR) ~ "THE ARTS",
+      grepl("LITERATURE", EDU.MAJOR) ~ "THE ARTS",
+      grepl("THEAT", EDU.MAJOR) ~ "THE ARTS",
+      grepl("PHOTOGRAPHY", EDU.MAJOR) ~ "THE ARTS",
+      grepl("FILM", EDU.MAJOR) ~ "THE ARTS",
+      grepl("PLAYWRIGHTING", EDU.MAJOR) ~ "THE ARTS",
+      grepl("TEXTILES", EDU.MAJOR) ~ "THE ARTS",
+      grepl("FILM", EDU.MAJOR) ~ "THE ARTS",
+      EDU.MAJOR %in% c("ENGLISH",
+                       "CHINESE",
+                       "FRENCH",
+                       "INTERPRETING") ~ "LANGUAGES",
+      
+      T ~ EDU.MAJOR
+    )
+  )
 
-ANALYTICS
 
+filter <- TEMP %>% 
+  group_by(EDU.MAJOR) %>% 
+  summarise(count = n()) %>% 
+  subset(count > 10) 
+
+names <- filter$EDU.MAJOR
+
+TEMP <- TEMP %>% 
+  mutate(
+    EDU.MAJOR = case_when(
+      EDU.MAJOR %nin% names ~ "OTHER",
+      T ~ EDU.MAJOR
+      )
+)
 
 TEMP %>% 
   group_by(EDU.MAJOR) %>% 

@@ -128,7 +128,7 @@ summary(ALL.YEARS$EDU.MAJOR)
 ALL.YEARS %>% group_by(EDU.MAJOR, YEAR) %>% 
   summarise(count = n()) %>% View()
 
-source(here::here("script", "wrangling", "edu_background.R"))
+source(here::here("script", "wrangling", "edu_major.R"))
 
 
 #  EXPERIENCE.DATAVIS.YEARS 
@@ -184,6 +184,7 @@ ALL.YEARS <- ALL.YEARS %>%
 summary(ALL.YEARS$GENDER)
 
 
+##################################################################################### YOU ARE HERE
 
 #  JOB.DATASCI.HOURS 
 #  DECIDE IF USE ALL YEARS OR JUST 2019 SINCE THE MEASUREMENTS ARE DIFFERENT
