@@ -184,7 +184,6 @@ ALL.YEARS <- ALL.YEARS %>%
 summary(ALL.YEARS$GENDER)
 
 
-##################################################################################### YOU ARE HERE
 
 #  JOB.DATASCI.HOURS 
 #  DECIDE IF USE ALL YEARS OR JUST 2019 SINCE THE MEASUREMENTS ARE DIFFERENT
@@ -226,7 +225,7 @@ ALL.YEARS <- ALL.YEARS %>%
     
   )
 
-source(here::here("script", "wrangling", "jod_datavis_audience.R"))
+source(here::here("script", "wrangling", "job_datavis_audience.R"))
 
 
 #  JOB.DATAVIS.AUDIENCEDATAVISCONSUMPTION 
@@ -259,9 +258,11 @@ ALL.YEARS %>% group_by(JOB.DATAVIS.AUDIENCEDATAVISUSE) %>%
   summarise(count = n()) %>% View()
 
 
+source(here::here("script", "wrangling", "job_datavis_audience_datavisuse.R"))
+
 
 #  JOB.DATAVIS.AUDIENCEKNOWLEGE 
-# With this one im not so sure, if we should separate it, the mix is what makes it interesting.
+# READY!!
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
     JOB.DATAVIS.AUDIENCEKNOWLEGE = as.character(JOB.DATAVIS.AUDIENCEKNOWLEGE),
@@ -274,6 +275,8 @@ summary(ALL.YEARS$JOB.DATAVIS.AUDIENCEKNOWLEGE)
 ALL.YEARS %>% group_by(JOB.DATAVIS.AUDIENCEKNOWLEGE, YEAR) %>% 
   summarise(count = n()) %>% View()
 
+
+##################################################################################### YOU ARE HERE
 
 
 #  JOB.DATAVIS.AUDIENCERELATIONSHIP
@@ -316,6 +319,8 @@ ALL.YEARS <- ALL.YEARS %>%
 summary(ALL.YEARS$JOB.DATAVIS.CHARTSUSED)
 ALL.YEARS %>% group_by(JOB.DATAVIS.CHARTSUSED, YEAR) %>% 
   summarise(count = n()) %>% View()
+
+source(here::here("script", "wrangling", "job_datavis_chartsused.R"))
 
 
 #  JOB.DATAVIS.EXPECTATIONS 
@@ -382,6 +387,9 @@ ALL.YEARS <- ALL.YEARS %>%
   )
 
 summary(ALL.YEARS$JOB.DATAVIS.FRUSTRATION)
+
+source(here::here("script", "wrangling", "job_datavis_goals.R"))
+
 
 
 #  JOB.DATAVIS.HOURS 
@@ -494,7 +502,7 @@ summary(ALL.YEARS$JOB.DATAVIS.PERSONALKNOWLEDGE)
 
 
 #  JOB.DATAVIS.PRESENTATION 
-## NEEDS CLEANING
+## READY
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
     JOB.DATAVIS.PRESENTATION = as.character(JOB.DATAVIS.PRESENTATION)
@@ -503,9 +511,11 @@ ALL.YEARS <- ALL.YEARS %>%
 
 summary(ALL.YEARS$JOB.DATAVIS.PRESENTATION)
 
+source(here::here("script", "wrangling", "job_datavis_presentation.R"))
+
 
 #  JOB.DATAVIS.REACH 
-## NEEDS CLEANING
+## READY
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
     JOB.DATAVIS.REACH = as.character(JOB.DATAVIS.REACH)
@@ -514,6 +524,7 @@ ALL.YEARS <- ALL.YEARS %>%
 
 summary(ALL.YEARS$JOB.DATAVIS.REACH)
 
+source(here::here("script", "wrangling", "job_datavis_reach.R"))
 
 
 #  JOB.DATAVIS.RESOURCES 
@@ -544,28 +555,31 @@ ALL.YEARS %>% group_by(JOB.DATAVIS.TOOLCHOICE, YEAR) %>%
   summarise(count = n()) %>% View()
 
 
-
-#  JOB.DATAVIS.TOOLS
-## NEEDS CLEANING
-ALL.YEARS <- ALL.YEARS %>% 
-  mutate(
-    JOB.DATAVIS.TOOLS = as.character(JOB.DATAVIS.TOOLS)
-    
-  )
-
-summary(ALL.YEARS$JOB.DATAVIS.TOOLS)
-
-
-
-#  JOB.DATAVIS.USE 
-## NEEDS CLEANING
-ALL.YEARS <- ALL.YEARS %>% 
-  mutate(
-    JOB.DATAVIS.USE = as.character(JOB.DATAVIS.USE)
-    
-  )
-
-summary(ALL.YEARS$JOB.DATAVIS.USE)
+#######################################################################
+#                                NO                                   #
+#######################################################################
+# #  JOB.DATAVIS.TOOLS
+# ## NEEDS CLEANING
+# ALL.YEARS <- ALL.YEARS %>% 
+#   mutate(
+#     JOB.DATAVIS.TOOLS = as.character(JOB.DATAVIS.TOOLS)
+#     
+#   )
+# 
+# summary(ALL.YEARS$JOB.DATAVIS.TOOLS)
+# 
+# 
+# 
+# #  JOB.DATAVIS.USE 
+# ## NEEDS CLEANING
+# ALL.YEARS <- ALL.YEARS %>% 
+#   mutate(
+#     JOB.DATAVIS.USE = as.character(JOB.DATAVIS.USE)
+#     
+#   )
+# 
+# summary(ALL.YEARS$JOB.DATAVIS.USE)
+# 
 
 
 
@@ -683,6 +697,7 @@ ALL.YEARS %>% subset(YEAR == "2019") %>%
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
     JOB.SECTOR = as.character(JOB.SECTOR),
+    JOB.SECTOR = toupper(JOB.SECTOR),
     JOB.SECTOR = as.factor(JOB.SECTOR)
     
   )
@@ -692,6 +707,8 @@ ALL.YEARS %>% group_by(JOB.SECTOR, YEAR) %>%
   summarise(count = n()) %>% View()
 
 
+source(here::here("script", "wrangling", "job_sector.R"))
+  
 #  LGBTQ 
 ##  READY!!
 ALL.YEARS <- ALL.YEARS %>% 
@@ -711,6 +728,7 @@ ALL.YEARS %>% group_by(LGBTQ, YEAR) %>%
 ALL.YEARS <- ALL.YEARS %>% 
   mutate(
     SPOKEN.LANGUAGE = as.character(SPOKEN.LANGUAGE),
+    SPOKEN.LANGUAGE = toupper(SPOKEN.LANGUAGE),
     SPOKEN.LANGUAGE = as.factor(SPOKEN.LANGUAGE)
     
   )

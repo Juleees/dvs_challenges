@@ -113,9 +113,8 @@ TEMP <-  TEMP %>%
     )
   ) 
 
-EDU.METHODS <- TEMP %>% 
-  group_by( REGION, YEAR, NAME) %>% 
-  summarise(COUNT = n())
+EDU.METHODS <- TEMP 
 
+?sum()
 
   
